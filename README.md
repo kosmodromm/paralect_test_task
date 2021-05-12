@@ -1,1 +1,1 @@
-# paralect_test_task
+# Startup summer Paralect - test task
