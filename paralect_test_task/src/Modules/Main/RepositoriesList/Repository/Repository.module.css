@@ -1,0 +1,9 @@
+.repository {
+  width: 877px;
+  height: 112px;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #ffffff;
+  margin-bottom: 24px;
+  border-radius: 6px;
+}

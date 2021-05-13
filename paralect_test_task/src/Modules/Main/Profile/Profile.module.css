@@ -1,0 +1,72 @@
+.profile {
+  width: 292.08px;
+  height: 431.98px;
+  margin-top: 40px;
+}
+
+.follow {
+  display: flex;
+  flex-direction: row;
+}
+
+.avatar {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.user_name {
+  margin: 28px 0 12px 0;
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.user_url {
+  margin-bottom: 25px;
+}
+
+.user_url a {
+  font-size: 18px;
+  color: #0064eb;
+  text-decoration: none;
+}
+
+.follow_list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.following {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.followers {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.followers_icon {
+  width: 21px;
+  height: 13.6957px;
+  margin-right: 8px;
+}
+
+.following_icon {
+  width: 21px;
+  height: 21px;
+  margin-right: 8px;
+}
+
+.followers_count {
+  margin: 0;
+}
+
+.following_count {
+  margin: 0;
+}
