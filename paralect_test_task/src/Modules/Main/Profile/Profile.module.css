@@ -16,6 +16,10 @@
   overflow: hidden;
 }
 
+.avatar img {
+  width: 280px;
+}
+
 .user_name {
   margin: 28px 0 12px 0;
   font-size: 26px;

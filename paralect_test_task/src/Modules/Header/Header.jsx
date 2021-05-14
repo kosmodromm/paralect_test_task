@@ -1,6 +1,16 @@
-import s from './Header.module.css';
+import s from "./Header.module.css";
+import React, { useState } from "react";
 
-function Header() {
+function Header(props) {
+  const [input, setValue] = useState("");
+
+  const onKeyDown = function (e) {
+    if (e.key === "Enter") {
+      props.searchUser(`${input}`);
+      setValue("");
+    }
+  };
+
   return (
     <div className={s.header}>
       <div className={s.logo}>
@@ -14,7 +24,16 @@ function Header() {
       </div>
       <div className={s.input_field}>
         <img src="/images/search.png" alt="search" />
-        <input type="text" />
+        <input
+          type="text"
+          value={input}
+          className="input"
+          placeholder="type to search github user"
+          onChange={(e) => {
+            setValue(e.target.value);
+          }}
+          onKeyDown={onKeyDown}
+        />
       </div>
     </div>
   );

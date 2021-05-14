@@ -1,16 +1,18 @@
-import s from './Profile.module.css';
+import s from "./Profile.module.css";
 
-function Profile() {
+function Profile(props) {
   return (
     <div className={s.profile}>
       <div>
         <div className={s.avatar}>
-          <img src="/images/profileimage.png" alt="avatar" />
+          <img src={props.avatar} alt="avatar" />
         </div>
         <div>
-          <p className={s.user_name}>Name</p>
+          <p className={s.user_name}>{props.name}</p>
           <p className={s.user_url}>
-            <a href="https://github.com">name-link</a>
+            <a href={props.url} target="_blank">
+              {props.login}
+            </a>
           </p>
           <div className={s.follow_list}>
             <div className={s.followers}>
@@ -19,7 +21,7 @@ function Profile() {
                 src="/images/followers.png"
                 alt="followers"
               />
-              <p className={s.followers_count}>1 followers</p>
+              <p className={s.followers_count}>{props.followers} followers</p>
             </div>
             <div className={s.following}>
               <img
@@ -27,7 +29,7 @@ function Profile() {
                 src="/images/following.png"
                 alt="following"
               />
-              <p className={s.following_count}>1 following</p>
+              <p className={s.following_count}>{props.following} following</p>
             </div>
           </div>
         </div>
