@@ -2,7 +2,9 @@
   width: 877px;
   height: 112px;
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
   background-color: #ffffff;
   margin-bottom: 24px;
   border-radius: 6px;

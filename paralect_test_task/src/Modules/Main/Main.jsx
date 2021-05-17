@@ -1,6 +1,6 @@
-import Profile from "./Profile/Profile";
-import RepositoriesList from "./RepositoriesList/RepositoriesList";
-import s from "./Main.module.css";
+import Profile from './Profile/Profile';
+import RepositoriesList from './RepositoriesList/RepositoriesList';
+import s from './Main.module.css';
 
 function Main(props) {
   return (
@@ -15,7 +15,7 @@ function Main(props) {
       />
       <RepositoriesList
         reposCount={props.userData.public_repos}
-        // reposData={props.reposData}
+        reposData={props.reposData}
       />
     </div>
   );
