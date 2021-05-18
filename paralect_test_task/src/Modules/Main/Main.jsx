@@ -14,8 +14,11 @@ function Main(props) {
         following={props.userData.following}
       />
       <RepositoriesList
+        login={props.userData.login}
         reposCount={props.userData.public_repos}
         reposData={props.reposData}
+        setPage={props.setPage}
+        getRepo={props.getRepo}
       />
     </div>
   );

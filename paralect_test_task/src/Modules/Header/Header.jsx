@@ -1,13 +1,14 @@
-import s from "./Header.module.css";
-import React, { useState } from "react";
+import s from './Header.module.css';
+import React, { useState } from 'react';
 
 function Header(props) {
-  const [input, setValue] = useState("");
+  const [input, setValue] = useState('');
 
   const onKeyDown = function (e) {
-    if (e.key === "Enter") {
-      props.searchUser(`${input}`);
-      setValue("");
+    if (e.key === 'Enter') {
+      props.getUser(`${input}`);
+      props.getRepo(`${input}`);
+      setValue('');
     }
   };
 

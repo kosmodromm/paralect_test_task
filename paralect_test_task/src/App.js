@@ -1,39 +1,53 @@
 import "./App.css";
 import Header from "./Modules/Header/Header";
 import Main from "./Modules/Main/Main";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function App() {
   const [error, setError] = useState(null);
   const [onStart, setOnStart] = useState(true);
-  const [awaitingResponses, setAwaitingResponses] = useState(0);
+  const [awaitingResponses, setAwaitingResponses] = useState(2);
   const [userData, setUserData] = useState([]);
   const [reposData, setReposData] = useState([]);
-  
-  const searchUser = function (login) {
+  const [pageNumber, setPageNumber] = useState(1);
+
+  let url = `https://api.github.com/users/`;
+
+  const getRepo = function (login) {
+    try {
+    fetch(`${url}${login}/repos?per_page=4&page=${pageNumber}`)
+      .then (res => res.json())
+      .then ((d) => {setReposData(d);
+      console.log(d);})
+      .finally(() => setAwaitingResponses(awaitingResponses => awaitingResponses - 1))
+    } catch (e) {
+      setError(e);
+    }
+  }
+
+  const getUser = function (login) {
     setError(null);
-    setAwaitingResponses(2);
     setOnStart(false);
-    let url = `https://api.github.com/users/${login}`;
+
     try { 
-      fetch(url)
+      fetch(url+login)
       .then (res => {
         if (!res.ok) {
-          throw Error(`is not ok: ` + res.status);
+          throw Error(`status: ` + res.status);
         }
         return res.json();
       })
       .then ((data) => setUserData(data))
       .catch((e) => setError(e))
       .finally(() => setAwaitingResponses(awaitingResponses => awaitingResponses - 1))
-      fetch(`${url}/repos`)
-      .then (res => res.json())
-      .then ((data) => setReposData(data))
-      .finally(() => setAwaitingResponses(awaitingResponses => awaitingResponses - 1))
     } catch (e) {
       setError(e);
     } 
   };
+
+  const setPage = function(num) {
+    setPageNumber(num);
+  }
 
   let pageState;
   if (onStart) {
@@ -52,46 +66,15 @@ function App() {
       )
   } else if (awaitingResponses !== 0) {
     pageState = <div className="loader"></div>
-  } else {pageState = <Main userData={userData} reposData={reposData} />}
+  } else {pageState = <Main userData={userData} reposData={reposData} setPage={setPage} getRepo={getRepo} />}
   
-  console.log(error)
+  console.log(awaitingResponses);
   return (
     <div className="App">
-      <Header searchUser={searchUser} />
+      <Header getUser={getUser} getRepo={getRepo}/>
       {pageState}
     </div>
   );
 }
 
 export default App;
-
-
-// async function loadData(url) {
-//   let response = await fetch(url);
-//   if (response.status == 200) {
-//     return response.json();
-//   } else {
-//     throw new Error();
-//   }
-// }
-
-// async function fetchAsyncGithubData() {
-//   try {
-    
-//     const uData = await loadData(url);
-//     setUserData(uData);
-//     const rData = await loadData(`${url}/repos`);
-//     setReposData(rData);
-//     setLoaded(false);
-//   } catch (err) {
-//     if (err.response.status == 404) {
-//       alert(
-//         "Такого пользователя не существует, пожалуйста, повторите ввод."
-//       );
-//     } else {
-//       throw err;
-//     }
-//   }
-// }
-
-// fetchAsyncGithubData();
