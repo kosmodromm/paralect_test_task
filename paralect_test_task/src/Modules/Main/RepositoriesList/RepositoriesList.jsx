@@ -1,11 +1,8 @@
 import Repository from './Repository/Repository';
 import s from './RepositoriesList.module.css';
 import ReactPaginate from 'react-paginate';
-import { useState } from 'react';
 
 function RepositoriesList(props) {
-  let [page, setPage] = useState(1);
-
   let repoState;
   if (props.reposData.length === 0) {
     repoState = (
@@ -22,7 +19,7 @@ function RepositoriesList(props) {
           {props.reposData.map((e, index) => {
             return (
               <Repository
-                key={index + 1 + 3 * (page - 1)}
+                key={index + 1 + 3 * props.initialPage}
                 repoName={e.name}
                 repoUrl={e.html_url}
                 repoInfo={e.description}
@@ -32,22 +29,19 @@ function RepositoriesList(props) {
         </div>
         <div className={s.pagination}>
           <p>
-            {page + 3 * (page - 1)} - {4 * page} of {props.reposCount} items
+            {props.initialPage + 3 * (props.initialPage - 1)} -{' '}
+            {4 * props.initialPage} of {props.reposCount} items
           </p>
           <ReactPaginate
-            pageCount={Math.floor(props.reposCount / 4)}
+            pageCount={Math.ceil(props.reposCount / 4)}
             previousLabel={''}
             nextLabel={''}
             breakLabel={'...'}
             breakClassName={s.break_me}
             marginPagesDisplayed={1}
             pageRangeDisplayed={3}
-            onPageChange={(e) => {
-              setPage(e.selected + 1);
-              props.setPage(e.selected + 1);
-              props.getRepo(props.login);
-            }}
-            onPageActive={(e) => console.log(e)}
+            onPageChange={(e) => props.setPage(e.selected)}
+            // onPageActive={(e) => console.log(e)}
             activeClassName={s.active}
             containerClassName={s.pagination_wrapper}
             pageClassName={s.pagination_page}
@@ -64,6 +58,7 @@ function RepositoriesList(props) {
     );
   }
 
+  console.log(props.initialPage);
   return <div className={s.repositories_list}>{repoState}</div>;
 }
 

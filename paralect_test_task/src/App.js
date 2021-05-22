@@ -1,24 +1,29 @@
 import "./App.css";
 import Header from "./Modules/Header/Header";
 import Main from "./Modules/Main/Main";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
   const [error, setError] = useState(null);
   const [onStart, setOnStart] = useState(true);
-  const [awaitingResponses, setAwaitingResponses] = useState(2);
+  const [awaitingResponses, setAwaitingResponses] = useState(0);
   const [userData, setUserData] = useState([]);
   const [reposData, setReposData] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
+
+  useEffect(() => {
+    console.log(pageNumber);
+    getRepo(userData.login);
+  }, [pageNumber]);
 
   let url = `https://api.github.com/users/`;
 
   const getRepo = function (login) {
     try {
-    fetch(`${url}${login}/repos?per_page=4&page=${pageNumber}`)
+      setAwaitingResponses(awaitingResponses => awaitingResponses + 1)
+      fetch(`${url}${login}/repos?per_page=4&page=${pageNumber}`)
       .then (res => res.json())
-      .then ((d) => {setReposData(d);
-      console.log(d);})
+      .then ((d) => setReposData(d))
       .finally(() => setAwaitingResponses(awaitingResponses => awaitingResponses - 1))
     } catch (e) {
       setError(e);
@@ -30,6 +35,7 @@ function App() {
     setOnStart(false);
 
     try { 
+      setAwaitingResponses(awaitingResponses => awaitingResponses + 1)
       fetch(url+login)
       .then (res => {
         if (!res.ok) {
@@ -46,7 +52,7 @@ function App() {
   };
 
   const setPage = function(num) {
-    setPageNumber(num);
+    setPageNumber(num + 1);
   }
 
   let pageState;
@@ -66,9 +72,8 @@ function App() {
       )
   } else if (awaitingResponses !== 0) {
     pageState = <div className="loader"></div>
-  } else {pageState = <Main userData={userData} reposData={reposData} setPage={setPage} getRepo={getRepo} />}
+  } else {pageState = <Main userData={userData} reposData={reposData} setPage={setPage} getRepo={getRepo} pageNumber={pageNumber}/>}
   
-  console.log(awaitingResponses);
   return (
     <div className="App">
       <Header getUser={getUser} getRepo={getRepo}/>

@@ -1,4 +1,5 @@
 .repositories_list {
+  position: relative;
   width: 877px;
   height: 100vh;
 }
@@ -9,6 +10,9 @@
 }
 
 .pagination {
+  position: absolute;
+  bottom: 160px;
+  right: 0;
   display: flex;
   justify-content: flex-end;
   align-items: baseline;
@@ -132,4 +136,8 @@
   user-select: none;
   cursor: pointer;
   color: #808080;
+}
+
+.pagination_page a {
+  outline: none;
 }
