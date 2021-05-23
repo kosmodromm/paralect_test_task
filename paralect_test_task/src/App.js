@@ -9,7 +9,7 @@ function App() {
   const [awaitingResponses, setAwaitingResponses] = useState(0);
   const [userData, setUserData] = useState([]);
   const [reposData, setReposData] = useState([]);
-  const [pageNumber, setPageNumber] = useState(1);
+  const [pageNumber, setPageNumber] = useState(0);
 
   useEffect(() => {
     console.log(pageNumber);
@@ -52,7 +52,7 @@ function App() {
   };
 
   const setPage = function(num) {
-    setPageNumber(num + 1);
+    setPageNumber(num);
   }
 
   let pageState;

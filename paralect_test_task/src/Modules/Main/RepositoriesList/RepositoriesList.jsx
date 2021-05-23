@@ -29,10 +29,13 @@ function RepositoriesList(props) {
         </div>
         <div className={s.pagination}>
           <p>
-            {props.initialPage + 3 * (props.initialPage - 1)} -{' '}
-            {4 * props.initialPage} of {props.reposCount} items
+            {props.initialPage + 1 + 3 * props.initialPage} -{' '}
+            {Math.min(4 * (props.initialPage + 1), props.reposCount)} of{' '}
+            {props.reposCount} items
           </p>
           <ReactPaginate
+            initialPage={props.initialPage}
+            disableInitialCallback={true}
             pageCount={Math.ceil(props.reposCount / 4)}
             previousLabel={''}
             nextLabel={''}
@@ -40,7 +43,10 @@ function RepositoriesList(props) {
             breakClassName={s.break_me}
             marginPagesDisplayed={1}
             pageRangeDisplayed={3}
-            onPageChange={(e) => props.setPage(e.selected)}
+            onPageChange={(e) => {
+              props.setPage(e.selected);
+              console.log(e);
+            }}
             // onPageActive={(e) => console.log(e)}
             activeClassName={s.active}
             containerClassName={s.pagination_wrapper}

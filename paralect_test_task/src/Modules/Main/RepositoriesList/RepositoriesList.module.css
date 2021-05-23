@@ -80,7 +80,7 @@
   height: 25px;
 }
 
-.previous {
+.previous a {
   border: solid #808080;
   border-width: 0 3px 3px 0;
   display: inline-block;
@@ -91,7 +91,7 @@
   transition: all 0.25s;
 }
 
-.next {
+.next a {
   border: solid #808080;
   border-width: 0 3px 3px 0;
   display: inline-block;
