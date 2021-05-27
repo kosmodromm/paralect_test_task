@@ -79,6 +79,7 @@
   .profile {
     width: auto;
     height: auto;
+    margin-top: 15px;
   }
 
   .avatar {
@@ -146,7 +147,7 @@
 
 @media (max-width: 530px) {
   .profile {
-    margin-top: 20px;
+    margin-top: 15px;
     width: 300px;
   }
 

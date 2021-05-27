@@ -9,6 +9,7 @@
 
 @media (max-width: 760px) {
   .main {
+    height: fit-content;
     flex-direction: column;
     justify-content: center;
     align-items: center;

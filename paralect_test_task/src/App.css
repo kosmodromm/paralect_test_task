@@ -81,3 +81,11 @@
     width: 100%;
   }
 }
+
+@media (max-width: 960px) {
+  .App {
+    overflow: visible;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+}
