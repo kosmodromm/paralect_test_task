@@ -75,3 +75,9 @@
     transform: rotate(350deg);
   }
 }
+
+@media (max-width: 1366px) {
+  .App {
+    width: 100%;
+  }
+}

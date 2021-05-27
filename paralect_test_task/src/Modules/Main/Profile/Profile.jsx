@@ -3,11 +3,11 @@ import s from './Profile.module.css';
 function Profile(props) {
   return (
     <div className={s.profile}>
-      <div>
+      <div className={s.profile_container}>
         <div className={s.avatar}>
           <img src={props.avatar} alt="avatar" />
         </div>
-        <div>
+        <div className={s.user_info}>
           <p className={s.user_name}>{props.name}</p>
           <p className={s.user_url}>
             <a href={props.url} target="_blank" rel="noreferrer">

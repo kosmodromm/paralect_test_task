@@ -21,7 +21,7 @@ function App() {
   const getRepo = function (login) {
     try {
       setAwaitingResponses(awaitingResponses => awaitingResponses + 1)
-      fetch(`${url}${login}/repos?per_page=4&page=${pageNumber}`)
+      fetch(`${url}${login}/repos?per_page=4&page=${pageNumber + 1}`)
       .then (res => res.json())
       .then ((d) => setReposData(d))
       .finally(() => setAwaitingResponses(awaitingResponses => awaitingResponses - 1))

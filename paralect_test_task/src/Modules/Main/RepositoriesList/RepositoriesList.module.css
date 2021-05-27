@@ -141,3 +141,47 @@
 .pagination_page a {
   outline: none;
 }
+
+@media (max-width: 1366px) {
+  .repositories_list {
+    width: 450px;
+    margin-right: 10px;
+  }
+  .pagination {
+    bottom: auto;
+  }
+}
+
+@media (max-width: 835px) {
+  .repositories_list {
+    width: 300px;
+  }
+}
+
+@media (max-width: 760px) {
+  .repositories_list {
+    width: 500px;
+    margin-top: 40px;
+  }
+
+  .header {
+    font-size: 1.5em;
+  }
+
+  .pagination {
+    left: 0;
+    right: auto;
+  }
+}
+
+@media (max-width: 530px) {
+  .repositories_list {
+    width: 300px;
+    margin-top: 20px;
+  }
+
+  .pagination_wrapper {
+    width: 140px;
+    padding-left: 20px;
+  }
+}

@@ -74,3 +74,83 @@
 .following_count {
   margin: 0;
 }
+
+@media (max-width: 1000px) {
+  .profile {
+    width: auto;
+    height: auto;
+  }
+
+  .avatar {
+    width: 20vw;
+    height: 20vw;
+  }
+
+  .avatar img {
+    width: 100%;
+  }
+}
+
+@media (max-width: 760px) {
+  .user_name {
+    font-size: 1.2em;
+    margin: 0;
+  }
+
+  .user_url a {
+    font-size: 1em;
+  }
+
+  .followers_count {
+    font-size: 0.8em;
+  }
+
+  .profile_container {
+    display: flex;
+    width: 500px;
+    justify-content: start;
+  }
+
+  .user_info {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-left: 30px;
+  }
+  .follow_list {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .following_count {
+    font-size: 0.8em;
+  }
+
+  .followers_icon {
+    width: 21px;
+    height: 13.6957px;
+    margin-right: 8px;
+  }
+
+  .following_icon {
+    width: 21px;
+    height: 21px;
+    margin-right: 8px;
+  }
+
+  .following {
+    margin: 0;
+  }
+}
+
+@media (max-width: 530px) {
+  .profile {
+    margin-top: 20px;
+    width: 300px;
+  }
+
+  .user_url {
+    margin: 4px 0 2px 0;
+  }
+}
