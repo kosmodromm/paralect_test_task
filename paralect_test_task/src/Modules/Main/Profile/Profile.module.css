@@ -108,7 +108,7 @@
   .profile_container {
     display: flex;
     width: 500px;
-    justify-content: start;
+    justify-content: flex-start;
   }
 
   .user_info {

@@ -45,7 +45,6 @@ function RepositoriesList(props) {
             pageRangeDisplayed={3}
             onPageChange={(e) => {
               props.setPage(e.selected);
-              console.log(e);
             }}
             // onPageActive={(e) => console.log(e)}
             activeClassName={s.active}
@@ -64,7 +63,6 @@ function RepositoriesList(props) {
     );
   }
 
-  console.log(props.initialPage);
   return <div className={s.repositories_list}>{repoState}</div>;
 }
 

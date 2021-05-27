@@ -12,7 +12,6 @@ function App() {
   const [pageNumber, setPageNumber] = useState(0);
 
   useEffect(() => {
-    console.log(pageNumber);
     getRepo(userData.login);
   }, [pageNumber]);
 
