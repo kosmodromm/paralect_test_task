@@ -87,5 +87,6 @@
     overflow: visible;
     overflow-x: hidden;
     overflow-y: scroll;
+    background-color: #e5e5e5;
   }
 }

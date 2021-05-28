@@ -178,6 +178,7 @@
   .repositories_list {
     width: 300px;
     margin-top: 20px;
+    height: auto;
   }
 
   .pagination_wrapper {
