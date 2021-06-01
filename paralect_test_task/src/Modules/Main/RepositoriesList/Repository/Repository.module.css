@@ -9,6 +9,7 @@
   margin-bottom: 24px;
   border-radius: 6px;
   padding: 24px 32px;
+  overflow: hidden;
 }
 
 .repository_name {

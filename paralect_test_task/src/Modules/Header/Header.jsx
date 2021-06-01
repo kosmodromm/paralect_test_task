@@ -1,16 +1,19 @@
 import s from './Header.module.css';
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
 function Header(props) {
   const [input, setValue] = useState('');
 
-  const onKeyDown = function (e) {
-    if (e.key === 'Enter') {
-      props.getUser(`${input}`);
-      props.getRepo(`${input}`);
-      setValue('');
-    }
-  };
+  const onKeyDown = useCallback(
+    (e) => {
+      if (e.key === 'Enter') {
+        props.getUser(`${input}`);
+        props.getRepo(`${input}`);
+        setValue('');
+      }
+    },
+    [input, props]
+  );
 
   return (
     <div className={s.header}>

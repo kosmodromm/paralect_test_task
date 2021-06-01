@@ -1,7 +1,7 @@
 import "./App.css";
 import Header from "./Modules/Header/Header";
 import Main from "./Modules/Main/Main";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 function App() {
   const [error, setError] = useState(null);
@@ -11,13 +11,9 @@ function App() {
   const [reposData, setReposData] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
 
-  useEffect(() => {
-    getRepo(userData.login);
-  }, [pageNumber]);
-
   let url = `https://api.github.com/users/`;
 
-  const getRepo = function (login) {
+  const getRepo = useCallback ((login) => {
     try {
       setAwaitingResponses(awaitingResponses => awaitingResponses + 1)
       fetch(`${url}${login}/repos?per_page=4&page=${pageNumber + 1}`)
@@ -27,9 +23,9 @@ function App() {
     } catch (e) {
       setError(e);
     }
-  }
+  }, [pageNumber, url])
 
-  const getUser = function (login) {
+  const getUser = useCallback ((login) => {
     setError(null);
     setOnStart(false);
 
@@ -48,11 +44,15 @@ function App() {
     } catch (e) {
       setError(e);
     } 
-  };
+  },[url]);
 
-  const setPage = function(num) {
+  useEffect(() => {
+    getRepo(userData.login);
+  }, [pageNumber, getRepo, userData.login]);
+
+  const setPage = useCallback ((num) => {
     setPageNumber(num);
-  }
+  }, [])
 
   let pageState;
   if (onStart) {
